@@ -1,27 +1,15 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import Rive from 'rive-react-native';
+import { View, StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import { useEffect } from 'react';
-import * as NavigationBar from "expo-navigation-bar";
-import { setStatusBarHidden } from 'expo-status-bar';
-
-export default function TabOneScreen() {
-
-  useEffect(() => {
-      const hideNavigationBar = async () => {
-        await NavigationBar.setVisibilityAsync("hidden"); // Oculta a barra de navegação
-        setStatusBarHidden(true);
-      };
-  
-      hideNavigationBar();
-    }, []);
-    
+export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Rive
+        resourceName='testing_rive_png'
+        
+        style={{ width: 300, height: 300 }} // Tamanho da animação
+      />
     </View>
   );
 }
@@ -29,16 +17,7 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    alignItems: 'center',
   },
 });
